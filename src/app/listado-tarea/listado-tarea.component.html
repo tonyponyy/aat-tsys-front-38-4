@@ -1,0 +1,57 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">titulo</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Hecho</th>
+      <th scope="col">Seleccionar</th>
+      <th scope="col">Borrar</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for ( tarea of array_registros; track $index) {    
+    <tr>
+      <th scope="row">{{ tarea.titulo }}</th>
+      <td>{{ tarea.descripcion }}</td>
+      <td>
+        @if (tarea.hecho){
+        <button
+          type="button"
+          class="col-sm-6 btn btn-primary"
+          (click)="doit(tarea.titulo)"
+        >
+          Acabar
+        </button>
+        }@else {
+        <button
+          type="button"
+          class="col-sm-6 btn btn-info"
+          (click)="doit(tarea.titulo)"
+        >
+          Reactivar
+        </button>
+
+        }
+      </td>
+      <td>
+        <button
+          type="button"
+          class="col-sm-6 btn btn-primary"
+          (click)="edit(tarea.titulo)"
+        >
+          Editar
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="col-sm-6 btn btn-danger"
+          (click)="delete_data(tarea.titulo)"
+        >
+          Borrar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
